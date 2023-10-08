@@ -7,6 +7,7 @@ import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -362,6 +363,7 @@ public class ExcelUtil {
 
         //导入的数据位Book类型
         Map<String, String> resMap = new HashMap<>();
+//        File file= ResourceUtils.getFile("classpath:xdl.xlsx");
         File file = new File("/Users/chryl/新电力用户映射.xlsx");
         FileInputStream is = new FileInputStream(file);
         ArrayList<OrgDTO> list = ExcelUtil.excle2Object(OrgDTO.class, is, "xlsx", columnIndexMap);
