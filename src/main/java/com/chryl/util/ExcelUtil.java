@@ -364,7 +364,8 @@ public class ExcelUtil {
         //导入的数据位Book类型
         Map<String, String> resMap = new HashMap<>();
 //        File file= ResourceUtils.getFile("classpath:xdl.xlsx");
-        File file = new File("/Users/chryl/新电力用户映射.xlsx");
+//        File file = new File("/Users/chryl/新电力用户映射.xlsx");
+        File file = new File("E:\\develop\\project\\2023\\广西\\广西智能ivr\\新电力/新电力用户映射.xlsx");
         FileInputStream is = new FileInputStream(file);
         ArrayList<OrgDTO> list = ExcelUtil.excle2Object(OrgDTO.class, is, "xlsx", columnIndexMap);
 
@@ -375,12 +376,14 @@ public class ExcelUtil {
         System.out.println("---");
         String s = JSON.toJSONString(list);
         System.out.println(s);
-        Map<String,Object> convertMap=new HashMap<>();
+        Map<String,OrgDTO> convertMap=new HashMap<>();
         for (OrgDTO orgDTO : list) {
-            convertMap.put(orgDTO.getYhbhPrefix8(),JSON.toJSONString(orgDTO));
+            convertMap.put(orgDTO.getYhbhPrefix8(),orgDTO);
         }
         System.out.println("-----");
         System.out.println(convertMap);
+        OrgDTO o = convertMap.get("04320001");
+        System.out.println(o.getAreaCode());
     }
 
 }
