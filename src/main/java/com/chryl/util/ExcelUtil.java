@@ -1,10 +1,15 @@
 package com.chryl.util;
 
+import cn.hutool.json.JSONObject;
+import com.alibaba.fastjson.JSON;
+import com.chryl.po.OrgDTO;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -237,8 +242,8 @@ public class ExcelUtil {
                 for (int j = 1; j < fi.length; j++) {//遍历类属性信息，但是 获取索引值从1开始，0为主键，不用手动录入，插入时自动生成
                     /*
                      * 	类：clazz------》fi  类属性信息
-            		 * 	excel中数据：sheet对象----》row为每行的实体对象
-            		 */
+                     * 	excel中数据：sheet对象----》row为每行的实体对象
+                     */
                     Field field = fi[j];
                     String fieldName = field.getName();
                     Cell cell = row.getCell(j - 1);
@@ -309,25 +314,25 @@ public class ExcelUtil {
 
     }
 
-//    public static void main(String[] args) throws Exception {
-////        ArrayList<Book> arrayList = new ArrayList<Book>();
-////        Book book = new Book();
-////        book.setId(1);
-////        book.setName("Java语言");
-////        book.setType("面向对象");
-////        Book book1 = new Book();
-////        book1.setId(2);
-////        book1.setName("西游记");
-////        book1.setType("故事");
-////        Book book2 = new Book();
-////        book2.setId(3);
-////        book2.setName("高数");
-////        book2.setType("难");
-////        arrayList.add(book);
-////        arrayList.add(book1);
-////        arrayList.add(book2);
-////        ExcelUtil.excleOut(arrayList,"D:/Sourcecode/Java/fanshe/book1.xls");
-//
+    public static void main(String[] args) throws Exception {
+//        ArrayList<Book> arrayList = new ArrayList<Book>();
+//        Book book = new Book();
+//        book.setId(1);
+//        book.setName("Java语言");
+//        book.setType("面向对象");
+//        Book book1 = new Book();
+//        book1.setId(2);
+//        book1.setName("西游记");
+//        book1.setType("故事");
+//        Book book2 = new Book();
+//        book2.setId(3);
+//        book2.setName("高数");
+//        book2.setType("难");
+//        arrayList.add(book);
+//        arrayList.add(book1);
+//        arrayList.add(book2);
+//        ExcelUtil.excleOut(arrayList,"D:/Sourcecode/Java/fanshe/book1.xls");
+
 //    	String columnNames[]={"商户名称","地址","客户所属机构","客户创建日期","客户类型","性别","证件号码","电话","个人资产","RANK"};//列名
 //        String keys[]    =  {"businessName","address","belongOrg","createDate","customerType","gender","idCard","phone","privateAsset","rank"};
 //
@@ -335,9 +340,9 @@ public class ExcelUtil {
 //        for (int i = 0; i < keys.length; i++) {
 //        	columnIndexMap.put(keys[i], i);
 //		}
-//
-//
-//        //导入的数据位Book类型
+
+
+        //导入的数据位Book类型
 //    	File file = new File("D:/客户信息管理.xlsx");
 //    	FileInputStream is = new FileInputStream(file);
 //        ArrayList<CrmCustomer> list = ExcelUtil.excle2Object(CrmCustomer.class,is,"xlsx",columnIndexMap);
@@ -345,6 +350,35 @@ public class ExcelUtil {
 //       for(CrmCustomer bo:list){
 //           System.out.println(bo.getIdCard()+" "+bo.getAddress()+" "+bo.getCreateDate());
 //       }
-//    }
+
+
+        String columnNames[]={"机构编码","机构名称","地区码","前八位地用户编号"};//列名
+        String keys[]    =  {"orgCode","orgName","areaCode","yhbhPrefix8"};
+
+        Map<String,Integer> columnIndexMap = new HashMap<String,Integer>();
+        for (int i = 0; i < keys.length; i++) {
+        	columnIndexMap.put(keys[i], i);
+		}
+
+        //导入的数据位Book类型
+        Map<String, String> resMap = new HashMap<>();
+        File file = new File("/Users/chryl/新电力用户映射.xlsx");
+        FileInputStream is = new FileInputStream(file);
+        ArrayList<OrgDTO> list = ExcelUtil.excle2Object(OrgDTO.class, is, "xlsx", columnIndexMap);
+
+        for (OrgDTO orgDTO : list) {
+            System.out.println(orgDTO.getOrgCode() + " " + orgDTO.getOrgName());
+//            Map<String, Object> transBean2Map = BeanUtil.transBean2Map(orgDTO);
+        }
+        System.out.println("---");
+        String s = JSON.toJSONString(list);
+        System.out.println(s);
+        Map<String,Object> convertMap=new HashMap<>();
+        for (OrgDTO orgDTO : list) {
+            convertMap.put(orgDTO.getYhbhPrefix8(),JSON.toJSONString(orgDTO));
+        }
+        System.out.println("-----");
+        System.out.println(convertMap);
+    }
 
 }
