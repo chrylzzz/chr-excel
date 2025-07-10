@@ -1,7 +1,7 @@
-package com.chryl.util.chryl_yypz;
+package com.chryl.module.chryl_yypz;
 
 
-import com.chryl.util.chryl_yypz.model.JnzModel;
+import com.chryl.module.chryl_yypz.model.JnzModel;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

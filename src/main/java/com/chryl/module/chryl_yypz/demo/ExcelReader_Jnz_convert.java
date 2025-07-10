@@ -1,8 +1,8 @@
-package com.chryl.util.chryl_yypz.demo;
+package com.chryl.module.chryl_yypz.demo;
 
-import com.chryl.util.chryl_yypz.CollectionsToExcel;
-import com.chryl.util.chryl_yypz.CollectionsToFile;
-import com.chryl.util.chryl_yypz.model.JnzModel;
+import com.chryl.module.chryl_yypz.CollectionsToExcel;
+import com.chryl.module.chryl_yypz.CollectionsToFile;
+import com.chryl.module.chryl_yypz.model.JnzModel;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;

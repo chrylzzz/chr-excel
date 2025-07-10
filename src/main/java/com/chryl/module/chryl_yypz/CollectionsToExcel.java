@@ -1,6 +1,6 @@
-package com.chryl.util.chryl_yypz;
+package com.chryl.module.chryl_yypz;
 
-import com.chryl.util.chryl_yypz.model.JnzModel;
+import com.chryl.module.chryl_yypz.model.JnzModel;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;

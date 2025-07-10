@@ -1,4 +1,4 @@
-package com.chryl.util.chryl_yypz.model;
+package com.chryl.module.chryl_yypz.model;
 
 import lombok.*;
 

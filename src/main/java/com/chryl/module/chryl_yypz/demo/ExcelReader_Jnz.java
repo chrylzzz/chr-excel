@@ -1,6 +1,6 @@
-package com.chryl.util.chryl_yypz.demo;
+package com.chryl.module.chryl_yypz.demo;
 
-import com.chryl.util.chryl_yypz.CollectionsToFile;
+import com.chryl.module.chryl_yypz.CollectionsToFile;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
