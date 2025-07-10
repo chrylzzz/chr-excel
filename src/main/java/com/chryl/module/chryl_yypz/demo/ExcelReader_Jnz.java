@@ -67,7 +67,7 @@ public class ExcelReader_Jnz {
 //                }
 //                System.out.println(); // 换行以分隔各行数据
 //                CollectionsToFile.writeMapToTextFile(jnzMap, "/Users/chryl/Downloads/jnzMap.txt");
-                CollectionsToFile.writeSetToTextFile(jnzSet, "/Users/chryl/Downloads/jnzSet.txt");
+                CollectionsToFile.writeSetToTextFile(jnzSet, "/Users/chryl/Downloads/jnzSet123.txt");
 
             }
         } catch (IOException e) {
